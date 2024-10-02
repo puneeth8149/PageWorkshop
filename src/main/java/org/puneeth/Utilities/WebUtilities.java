@@ -1,16 +1,15 @@
-package org.puneeth.StepDefinitionFile;
+package org.puneeth.Utilities;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.puneeth.StepDefinitionFile.BaseClass;
 
-public class Utlities {
-    public static WebDriver driver;
 
-    public Utlities() {
+public class WebUtilities extends BaseClass {
+    public WebUtilities() {
 
     }
 
@@ -56,7 +55,7 @@ public class Utlities {
 
         try {
             waitForElement(pathValue);
-            getElement(pathValue).sendKeys(inputValue);
+            driver.findElement(By.xpath(pathValue)).sendKeys(inputValue);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -67,7 +66,7 @@ public class Utlities {
 
         try {
             waitForElement(pathValue);
-            getElement(pathValue).click();
+            driver.findElement(By.xpath(pathValue)).click();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -76,7 +75,7 @@ public class Utlities {
     public static void waitAndSelectByValue(String pathValue, String inputValue) {
         try {
             waitForElement(pathValue);
-            WebElement selectValue = getElement(pathValue);
+            WebElement selectValue = driver.findElement(By.xpath(pathValue));
             Select sc = new Select(selectValue);
             sc.selectByValue(inputValue);
         } catch (Exception e) {
@@ -87,7 +86,7 @@ public class Utlities {
     public static void waitAndSelectByIndex(String pathValue, int inputValue) {
         try {
             waitForElement(pathValue);
-            WebElement selectValue = getElement(pathValue);
+            WebElement selectValue = driver.findElement(By.xpath(pathValue));
             Select sc = new Select(selectValue);
             sc.selectByIndex(inputValue);
         } catch (Exception e) {
@@ -98,7 +97,7 @@ public class Utlities {
     public static void waitAndSelectByVisibleText(String pathValue, String inputValue) {
         try {
             waitForElement(pathValue);
-            WebElement selectValue = getElement(pathValue);
+            WebElement selectValue = driver.findElement(By.xpath(pathValue));
             Select sc = new Select(selectValue);
             sc.selectByVisibleText(inputValue);
         } catch (Exception e) {
@@ -141,7 +140,7 @@ public class Utlities {
     public static void waitAndGetText(String pathValue) {
         try {
             waitForElement(pathValue);
-            getElement(pathValue).getText();
+            driver.findElement(By.xpath(pathValue)).getText();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -161,7 +160,7 @@ public class Utlities {
     public static String isElementPresent(String pathValue) {
         try {
             waitForElement(pathValue);
-            getElement(pathValue).isDisplayed();
+            driver.findElement(By.xpath(pathValue)).isDisplayed();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
